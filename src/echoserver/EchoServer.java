@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.lang.Thread;
+
 
 public class EchoServer {
 	public static final int PORT_NUMBER = 6013;
@@ -22,6 +24,9 @@ public class EchoServer {
 			OutputStream outputStream = socket.getOutputStream();
 
 			// Put your code here.
+			EchoRunnable myRun = new EchoRunnable(PORT_NUMBER);
+			Thread t = new Thread(myRun);
+			t.start();
 		}
 	}
 }

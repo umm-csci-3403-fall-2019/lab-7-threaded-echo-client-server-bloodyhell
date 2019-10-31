@@ -19,5 +19,6 @@ public class EchoClient {
 		OutputStream socketOutputStream = socket.getOutputStream();
 
 		// Put your code here.
+
 	}
 }
