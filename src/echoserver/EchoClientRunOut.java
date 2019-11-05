@@ -24,8 +24,11 @@ public class EchoClientRunOut implements Runnable {
 
             System.out.flush();
             client.shutdownOutput();
-        } catch (Exception e) {
-            // Do nothing
+
+        } catch (IOException ioe) {
+            System.out.println("We caught an unexpected exception");
+            System.err.println(ioe);
+
         }
     }
 

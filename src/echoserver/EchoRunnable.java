@@ -26,10 +26,12 @@ public class EchoRunnable implements Runnable{
 
             output.flush();
             client.shutdownOutput();
+
+        } catch (IOException ioe) {
+            System.out.println("We caught an unexpected exception");
+            System.err.println(ioe);
         }
-        catch (Exception e) {
-            // Do nothing
-        }
+
     }
 
 }
