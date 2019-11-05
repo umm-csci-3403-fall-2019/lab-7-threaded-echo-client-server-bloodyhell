@@ -9,21 +9,26 @@ import java.lang.Thread;
 
 public class EchoRunnable implements Runnable{
 
-    public  EchoRunnable(int port) {
-        ServerSocket sock = new ServerSocket(port);
+    private Socket client;
+
+    public  EchoRunnable(Socket socket) {
+        client = socket;
     }
 
     public void run() {
-        Socket client = sock.accept();
-        System.out.println("Got a request!");
-        InputStream  input = client.getInputStream();
-        int read;
-        OutputStream output = client.getOutputStream();
-        while((read = input.read()) != -1){
-            output.write(read);
-        }
+        try {
+            InputStream input = client.getInputStream();
+            int read;
+            OutputStream output = client.getOutputStream();
+            while ((read = input.read()) != -1) {
+                output.write(read);
+            }
 
-        input.close();
-        output.close();
+            output.flush();
+            client.shutdownOutput();
+        }
+        catch (Exception e) {
+            // Do nothing
+        }
     }
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.lang.Thread;
 
 public class EchoClient {
 	public static final int PORT_NUMBER = 6013;
@@ -19,6 +20,8 @@ public class EchoClient {
 		OutputStream socketOutputStream = socket.getOutputStream();
 
 		// Put your code here.
-
+		EchoRunnable myRun = new EchoRunnable(socket);
+		Thread t = new Thread(myRun);
+		t.start();
 	}
 }

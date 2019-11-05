@@ -24,7 +24,7 @@ public class EchoServer {
 			OutputStream outputStream = socket.getOutputStream();
 
 			// Put your code here.
-			EchoRunnable myRun = new EchoRunnable(PORT_NUMBER);
+			EchoRunnable myRun = new EchoRunnable(socket);
 			Thread t = new Thread(myRun);
 			t.start();
 		}
