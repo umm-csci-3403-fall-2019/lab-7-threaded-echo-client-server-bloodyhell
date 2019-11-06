@@ -20,10 +20,11 @@ public class EchoServer {
 		ServerSocket serverSocket = new ServerSocket(PORT_NUMBER);
 		while (true) {
 			Socket socket = serverSocket.accept();
-			InputStream inputStream = socket.getInputStream();
-			OutputStream outputStream = socket.getOutputStream();
+//			InputStream inputStream = socket.getInputStream();
+//			OutputStream outputStream = socket.getOutputStream();
 
 			// Put your code here.
+			// Creates a Runnable and then starts a thread using that runnable
 			EchoRunnable myRun = new EchoRunnable(socket);
 			Thread t = new Thread(myRun);
 			t.start();

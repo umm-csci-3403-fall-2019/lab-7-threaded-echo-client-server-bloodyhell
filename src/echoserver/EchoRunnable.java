@@ -17,13 +17,14 @@ public class EchoRunnable implements Runnable{
 
     public void run() {
         try {
+            //Reads the bytes from the input stream and writes to the output stream
             InputStream input = client.getInputStream();
             int read;
             OutputStream output = client.getOutputStream();
             while ((read = input.read()) != -1) {
                 output.write(read);
             }
-
+            //Flushes the rest and then shutdowns the socket/client so it can be used later
             output.flush();
             client.shutdownOutput();
 

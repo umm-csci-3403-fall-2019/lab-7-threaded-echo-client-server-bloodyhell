@@ -16,11 +16,13 @@ public class EchoClientRunIn implements Runnable {
 
     public void run() {
         try {
+            //Reads the bytes from the Standard out and writes them to the output stream
             int read;
             OutputStream output = client.getOutputStream();
             while ((read = System.in.read()) != -1) {
                 output.write(read);
             }
+            //Flushes the rest and then shutdowns the socket/client so it can be used later
             output.flush();
             client.shutdownOutput();
 
