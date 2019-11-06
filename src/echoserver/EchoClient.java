@@ -20,9 +20,11 @@ public class EchoClient {
         InputStream socketInputStream = socket.getInputStream();
         OutputStream socketOutputStream = socket.getOutputStream();
 
+        //Creates Runnables for input and output
         EchoClientRunIn runIn = new EchoClientRunIn(socket);
         EchoClientRunOut runOut = new EchoClientRunOut(socket);
 
+        //Creates and starts Threads for those input and output Runnables
         Thread tin = new Thread(runIn);
         tin.start();
 
